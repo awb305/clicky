@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Bembo std', 'Whitney'
+}
+
+.header {
+  background: rgba(225,225,225, 1.0);
+  background-size: 405px;
+  background-image: url('../../images/UNCCH.svg');
+  background-position-y: 125px;
+  background-position-x: 50px;
+  min-height: 15rem;
+  padding: 12rem 3rem 3rem 3rem;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  color: rgb(75,156,211,100%);
+  margin: 80px 0px 30px 0px;
+  font-size: 4rem;
+}
