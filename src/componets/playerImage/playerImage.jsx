@@ -20,6 +20,7 @@ class PlayerImage extends React.Component {
       this.props.increaseCurrentScore(this.props.currentScore);
     } else {
       this.props.clearCurrentScore();
+      this.props.checkTopScore();
     }
 
     this.setState({

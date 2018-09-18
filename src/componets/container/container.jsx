@@ -65,12 +65,16 @@ class Container extends React.Component {
     parseInt(currentScore);
     currentScore++;
     this.setState({
-      currentScore: currentScore++
+      currentScore: currentScore
     });
   };
 
   checkTopScore = () => {
-    this.state.topScore++;
+    if (this.state.currentScore > this.state.topScore) {
+      this.setState({
+        topScore: this.state.currentScore
+      });
+    }
   };
 
   clearCurrentScore = () => {
