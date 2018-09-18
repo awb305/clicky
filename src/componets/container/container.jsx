@@ -1,6 +1,7 @@
 import React from "react";
 import "./container.css";
 import {Grid, Row, Col, Image} from 'react-bootstrap'
+import PlayerImage from '../playerImage';
 
 const styles = {
   grid: {
@@ -55,15 +56,71 @@ const images = [
   } 
 ];
 
-let column =  images.map(image => (
-  <Col xs={6} md={4} style={styles.col}>
-    <Image className = "pic-UNC" alt={image.name} src={image.link} thumbnail />
-  </Col> 
- ));
+
+ let column = images.map(image => (
+   <PlayerImage image={image}></PlayerImage>
+ ))
+
+class Container extends React.Component  {
+
+ state = {
+
+  images : [
+    {
+      name: 'Jordan',
+      link: '/images/jordan.jpeg',
+      clicked: false
+    },
+    {
+      name: 'Antawn',
+      link: '/images/antawn.jpeg',
+      clicked: false
+    }, 
+    {
+      name: 'Billy',
+      link: '/images/billy.jpg',
+      clicked: false
+    }, 
+    {
+      name: 'Dean',
+      link: '/images/dean.jpg',
+      clicked: false
+    },
+    {
+      name: 'Ford',
+      link: '/images/ford.jpg',
+      clicked: false
+    }, 
+    {
+      name: 'James',
+      link: '/images/james.jpeg',
+      clicked: false
+    }, 
+    {
+      name: 'Justin',
+      link: '/images/justin.jpg',
+      clicked: false
+    }, 
+    {
+      name: 'Marcus',
+      link: '/images/marcus.jpg',
+      clicked: false
+    },
+    {
+      name: 'Vince',
+      link: '/images/vince.jpg',
+      clicked: false
+    } 
+  ]
+
+ }
 
 
-const Container= ()=> (
 
+
+
+render() {
+  return(
 <Grid fluid style={styles.grid}>
   <Row style={styles.row}>
     {column[0]}
@@ -82,10 +139,13 @@ const Container= ()=> (
   </Row>
 </Grid>
 
+  )
 
 
+}
 
-);
+
+}
 
 export default Container; 
 

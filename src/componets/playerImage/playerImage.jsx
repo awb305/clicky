@@ -1,18 +1,73 @@
-import React from "react";
-import "./footer.css";
+import React from 'react';
+import { Row, Col, Image } from 'react-bootstrap';
+import './playerImage.css';
+
+const styles = {
+  row: {
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: '4rem'
+  }
+};
+
+class PlayerImage extends React.Component {
+  state = {
+    clicked: false
+  };
+
+  handleClick = e => {
+    this.setState({
+      clicked: true
+    });
+  };
+
+  render() {
+    return (
+      <Col xs={6} md={4} style={styles.col}>
+        <Image
+          className="pic-UNC"
+          src={this.props.image.link}
+          name={this.props.image.name}
+          onClick={this.handleClick}
+          thumbnail
+        />
+      </Col>
+    );
+  }
+}
+
+export default PlayerImage;
+
+/* class PlayerImage extends React.Component {
+
+constructor(props) {
+  super(props);
+  this.handleClick = this.handleClick.bind(this);
+  this.state = {
+    clicked: false
+  }
+}
 
 
+handleClick = (e) => {
+  this.setState({
+    clicked: true
+  })
 
-const Footer = ()=> (
+}
 
-  <footer className="footer">
-    <div className="bottom">Clicky Game</div>
-  </footer>
+render() {
+  
+  return(
 
+  <Col xs={6} md={4} style={styles.col}>
+      <Image className = "pic-UNC" src={this.props.image.link} name={this.props.image.name} onClick={this.handleClick} thumbnail />
+    </Col>
 
+  )
+}
 
-);
+}
 
-export default Footer; 
-
-
+export default PlayerImage; 
+ */
