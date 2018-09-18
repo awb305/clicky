@@ -15,7 +15,13 @@ class PlayerImage extends React.Component {
     clicked: false
   };
 
-  handleClick = e => {
+  handleClick = () => {
+    if (!this.state.clicked) {
+      this.props.increaseCurrentScore(this.props.currentScore);
+    } else {
+      this.props.clearCurrentScore();
+    }
+
     this.setState({
       clicked: true
     });
@@ -37,37 +43,3 @@ class PlayerImage extends React.Component {
 }
 
 export default PlayerImage;
-
-/* class PlayerImage extends React.Component {
-
-constructor(props) {
-  super(props);
-  this.handleClick = this.handleClick.bind(this);
-  this.state = {
-    clicked: false
-  }
-}
-
-
-handleClick = (e) => {
-  this.setState({
-    clicked: true
-  })
-
-}
-
-render() {
-  
-  return(
-
-  <Col xs={6} md={4} style={styles.col}>
-      <Image className = "pic-UNC" src={this.props.image.link} name={this.props.image.name} onClick={this.handleClick} thumbnail />
-    </Col>
-
-  )
-}
-
-}
-
-export default PlayerImage; 
- */

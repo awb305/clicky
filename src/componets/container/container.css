@@ -1,5 +1,5 @@
-.container{
-  background: rgba(225,225,225, 1.0);
+.container {
+  background: rgba(225, 225, 225, 1.0);
   min-height: 80%;
 }
 
@@ -11,3 +11,26 @@ img {
 }
 
 
+.navbar {
+  background: lightblue;
+  min-height: 70px;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  font-size: clac(10px +14*(100vw - 320px)/800);
+  white-space: nowrap;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+ul {
+  display: block;
+  width: 100%;
+  list-style-type: disc;
+}
+
+li {
+  display: inline-block;
+  padding: 26px 0;
+  width: 33.3%;
+  text-align: center;
+}
