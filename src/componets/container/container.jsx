@@ -16,7 +16,55 @@ const styles = {
   }
 };
 
-const images = [
+/* const imagesSeed = [
+  {
+    name: 'Jordan',
+    link: '/images/jordan.jpeg',
+    clicked: false
+  },
+  {
+    name: 'Antawn',
+    link: '/images/antawn.jpeg',
+    clicked: false
+  },
+  {
+    name: 'Billy',
+    link: '/images/billy.jpg',
+    clicked: false
+  },
+  {
+    name: 'Dean',
+    link: '/images/dean.jpg',
+    clicked: false
+  },
+  {
+    name: 'Ford',
+    link: '/images/ford.jpg',
+    clicked: false
+  },
+  {
+    name: 'James',
+    link: '/images/james.jpeg',
+    clicked: false
+  },
+  {
+    name: 'Justin',
+    link: '/images/justin.jpg',
+    clicked: false
+  },
+  {
+    name: 'Marcus',
+    link: '/images/marcus.jpg',
+    clicked: false
+  },
+  {
+    name: 'Vince',
+    link: '/images/vince.jpg',
+    clicked: false
+  }
+];
+ */
+const imagesSeed = [
   {
     name: 'Jordan',
     link: '/images/jordan.jpeg',
@@ -70,10 +118,10 @@ class Container extends React.Component {
     this.state = {
       currentScore: 0,
       topScore: 0,
-      images: images
+      images: imagesSeed
     };
 
-    this.changeClickedState = this.changeClickedState.bind(this);
+    this.clickedFunc = this.clickedFunc.bind(this);
   }
 
   increaseCurrentScore = currentScore => {
@@ -96,24 +144,83 @@ class Container extends React.Component {
     this.setState({
       currentScore: 0
     });
+    console.log('current score should be 0', this.state.currentScore);
   };
 
-  changeClickedState(e) {
-    const { name } = e.target;
+  resetClicks = () => {
     const mutatedClone = this.state.images.map(element => {
-      if (element.name === name) {
-        let obj = element;
-        obj.clicked = true;
-        return obj;
-      }
-      return element;
+      let obj = element;
+      obj.clicked = false;
+      return obj;
     });
-
     this.setState({
       images: mutatedClone
     });
+  };
 
-    this.increaseCurrentScore(this.state.currentScore);
+  clickedFunc(e) {
+    const { name } = e.target;
+    //console.log(name);
+    let cloneHanler = true;
+    this.state.images.some(element => {
+      //console.log(element.name, name, element.clicked);
+      if (element.name === name && element.clicked) {
+        this.checkTopScore();
+        this.clearCurrentScore();
+        console.log(imagesSeed);
+        this.setState({
+          images: imagesSeed
+        });
+        cloneHanler = false;
+        this.resetClicks();
+        return true;
+      } else {
+        this.increaseCurrentScore(this.state.currentScore);
+      }
+    });
+
+    if (cloneHanler) {
+      this.state.images.forEach(element => {
+        //console.log(element.name);
+        const mutatedClone = this.state.images.map(element => {
+          if (element.name === name) {
+            let obj = element;
+            obj.clicked = true;
+            return obj;
+          }
+          return element;
+        });
+        this.setState({
+          images: mutatedClone
+        });
+      });
+    }
+
+    //this.increaseCurrentScore(this.state.currentScore);
+
+    /*
+    this.state.images.forEach(element => {
+      console.log(element.name, name, element.clicked);
+      if (element.name === name && element.clicked === true) {
+        console.log('here');
+        this.checkTopScore();
+        this.clearCurrentScore();
+        console.log('current score should be 0', this.state.currentScore);
+      } else {
+        const mutatedClone = this.state.images.map(element => {
+          if (element.name === name) {
+            let obj = element;
+            obj.clicked = true;
+            return obj;
+          }
+          return element;
+        });
+        this.setState({
+          images: mutatedClone
+        });
+        this.increaseCurrentScore(this.state.currentScore);
+      }
+    }); */
   }
 
   makePlayerImages = () => {
@@ -123,7 +230,7 @@ class Container extends React.Component {
         image={image}
         currentScore={this.state.currentScore}
         topScore={this.state.topScore}
-        clickedFunc={this.changeClickedState}
+        clickedFunc={this.clickedFunc}
         increaseCurrentScore={this.increaseCurrentScore}
         checkTopScore={this.checkTopScore}
         clearCurrentScore={this.clearCurrentScore}
@@ -146,6 +253,7 @@ class Container extends React.Component {
         clearCurrentScore={this.clearCurrentScore}
       />
     )); */
+    // console.log('current score should be 0', this.state.currentScore);
 
     const column = this.makePlayerImages();
     return (

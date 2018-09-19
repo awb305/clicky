@@ -15,29 +15,6 @@ class PlayerImage extends React.Component {
     clicked: false
   };
 
-  /* handleClick = () => {
-    if (!this.state.clicked) {
-      this.props.increaseCurrentScore(this.props.currentScore);
-    } else {
-      this.props.clearCurrentScore();
-      this.props.checkTopScore();
-    }
-
-    this.setState({
-      clicked: true
-    });
-  }; */
-
-  handleClick = () => {
-    if (!this.props.clicked) {
-      console.log(this.props.item);
-      this.props.increaseCurrentScore(this.props.currentScore);
-    } else {
-      this.props.clearCurrentScore();
-      this.props.checkTopScore();
-    }
-  };
-
   render() {
     return (
       <Col xs={6} md={4} style={styles.col}>
