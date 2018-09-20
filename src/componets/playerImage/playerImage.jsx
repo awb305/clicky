@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Col, Image } from 'react-bootstrap';
 import './playerImage.css';
 
 const styles = {

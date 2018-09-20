@@ -1,6 +1,6 @@
 import React from 'react';
 import './container.css';
-import { Grid, Row, Col, Image } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import Header from '../header';
 import PlayerImage from '../playerImage';
 
@@ -16,54 +16,6 @@ const styles = {
   }
 };
 
-/* const imagesSeed = [
-  {
-    name: 'Jordan',
-    link: '/images/jordan.jpeg',
-    clicked: false
-  },
-  {
-    name: 'Antawn',
-    link: '/images/antawn.jpeg',
-    clicked: false
-  },
-  {
-    name: 'Billy',
-    link: '/images/billy.jpg',
-    clicked: false
-  },
-  {
-    name: 'Dean',
-    link: '/images/dean.jpg',
-    clicked: false
-  },
-  {
-    name: 'Ford',
-    link: '/images/ford.jpg',
-    clicked: false
-  },
-  {
-    name: 'James',
-    link: '/images/james.jpeg',
-    clicked: false
-  },
-  {
-    name: 'Justin',
-    link: '/images/justin.jpg',
-    clicked: false
-  },
-  {
-    name: 'Marcus',
-    link: '/images/marcus.jpg',
-    clicked: false
-  },
-  {
-    name: 'Vince',
-    link: '/images/vince.jpg',
-    clicked: false
-  }
-];
- */
 const imagesSeed = [
   {
     name: 'Jordan',
@@ -125,7 +77,7 @@ class Container extends React.Component {
   }
 
   increaseCurrentScore = currentScore => {
-    parseInt(currentScore);
+    parseInt(currentScore, 10);
     currentScore++;
     this.setState({
       currentScore: currentScore
@@ -158,7 +110,7 @@ class Container extends React.Component {
     });
   };
 
-  clickedFunc(e) {
+  clickedFunc = e => {
     const { name } = e.target;
     //console.log(name);
     let cloneHanler = true;
@@ -195,66 +147,17 @@ class Container extends React.Component {
         });
       });
     }
-
-    //this.increaseCurrentScore(this.state.currentScore);
-
-    /*
-    this.state.images.forEach(element => {
-      console.log(element.name, name, element.clicked);
-      if (element.name === name && element.clicked === true) {
-        console.log('here');
-        this.checkTopScore();
-        this.clearCurrentScore();
-        console.log('current score should be 0', this.state.currentScore);
-      } else {
-        const mutatedClone = this.state.images.map(element => {
-          if (element.name === name) {
-            let obj = element;
-            obj.clicked = true;
-            return obj;
-          }
-          return element;
-        });
-        this.setState({
-          images: mutatedClone
-        });
-        this.increaseCurrentScore(this.state.currentScore);
-      }
-    }); */
-  }
+  };
 
   makePlayerImages = () => {
     const column = this.state.images.map((image, index) => (
-      <PlayerImage
-        item={index}
-        image={image}
-        currentScore={this.state.currentScore}
-        topScore={this.state.topScore}
-        clickedFunc={this.clickedFunc}
-        increaseCurrentScore={this.increaseCurrentScore}
-        checkTopScore={this.checkTopScore}
-        clearCurrentScore={this.clearCurrentScore}
-      />
+      <PlayerImage image={image} clickedFunc={this.clickedFunc} />
     ));
 
     return column;
   };
 
   render() {
-    /* const column = this.state.images.map((image, index) => (
-      <PlayerImage
-        item={index}
-        image={image}
-        currentScore={this.state.currentScore}
-        topScore={this.state.topScore}
-        clicked={this.clicked}
-        increaseCurrentScore={this.increaseCurrentScore}
-        checkTopScore={this.checkTopScore}
-        clearCurrentScore={this.clearCurrentScore}
-      />
-    )); */
-    // console.log('current score should be 0', this.state.currentScore);
-
     const column = this.makePlayerImages();
     return (
       <div>
