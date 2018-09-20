@@ -65,16 +65,11 @@ const imagesSeed = [
 ];
 
 class Container extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentScore: 0,
-      topScore: 0,
-      images: imagesSeed
-    };
-
-    this.clickedFunc = this.clickedFunc.bind(this);
-  }
+  state = {
+    currentScore: 0,
+    topScore: 0,
+    images: imagesSeed
+  };
 
   increaseCurrentScore = currentScore => {
     parseInt(currentScore, 10);
@@ -96,7 +91,6 @@ class Container extends React.Component {
     this.setState({
       currentScore: 0
     });
-    console.log('current score should be 0', this.state.currentScore);
   };
 
   resetClicks = () => {
@@ -112,14 +106,13 @@ class Container extends React.Component {
 
   clickedFunc = e => {
     const { name } = e.target;
-    //console.log(name);
+
     let cloneHanler = true;
     this.state.images.some(element => {
-      //console.log(element.name, name, element.clicked);
       if (element.name === name && element.clicked) {
         this.checkTopScore();
         this.clearCurrentScore();
-        console.log(imagesSeed);
+
         this.setState({
           images: imagesSeed
         });
