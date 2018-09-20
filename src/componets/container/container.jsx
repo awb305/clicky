@@ -121,6 +121,7 @@ class Container extends React.Component {
         return true;
       } else {
         this.increaseCurrentScore(this.state.currentScore);
+        return false;
       }
     });
 
@@ -146,7 +147,6 @@ class Container extends React.Component {
     const column = this.state.images.map((image, index) => (
       <PlayerImage image={image} clickedFunc={this.clickedFunc} />
     ));
-
     return column;
   };
 
